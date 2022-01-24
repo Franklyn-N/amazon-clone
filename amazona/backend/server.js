@@ -1,26 +1,29 @@
 import express from 'express';
-import data from './data.js';
+import config from './config/config.js ';
+import mongoose from 'mongoose';
+import userRouter from './routes/user.js';
+import productRouter from './routes/product.js';
+
 
 const app = express();
 
-app.get('/api/products', (req, res) => {
-    res.send(data.products);
-})
+const MONGODB_URI = `mongodb+srv://${config.mongo.user}:${config.mongo.password}@mycluster.eruob.mongodb.net/${config.mongo.host}`;
 
-app.get('/api/products/:id', (req, res) => {
-    const product = data.products.find((x) => x._id === req.params.id);
-    if (product) {
-        res.send(product);
-    } else {
-        res.status(404).send({message: 'Product not found!'});
-    }
-});
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.use('/api/user', userRouter);
+app.use('/api/products', productRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is ready!');
 });
 
 
-app.listen(8000, () => {
-    console.log('Running on port 8000');
+mongoose.connect(MONGODB_URI).then(() => {
+    app.listen(8000, () => {
+        console.log('Running on port 8000');
+    }) 
+}).catch(err => {
+    console.log(err)
 })

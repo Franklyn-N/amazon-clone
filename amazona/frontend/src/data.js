@@ -1,7 +1,6 @@
 const data = {
   products: [
     {
-      _id: '1',
       name: 'Mustang Shelby',
       category: 'Cars',
       image: '/images/car1.jpg',
@@ -13,7 +12,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '2',
       name: 'Yamaha Power Bike',
       category: 'Bikes',
       image: '/images/bike2.png',
@@ -25,7 +23,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '3',
       name: 'Tesla v16',
       category: 'Cars',
       image: '/images/car2.jpg',
@@ -37,7 +34,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '4',
       name: 'Aventador',
       category: 'Cars',
       image: '/images/car3.png',
@@ -49,7 +45,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '5',
       name: 'Alienware G6',
       category: 'Cars',
       image: '/images/car4.jpg',
@@ -61,7 +56,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '6',
       name: 'Avaron v18',
       category: 'Bikes',
       image: '/images/bike3.jpg',
@@ -73,7 +67,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '7',
       name: 'Matrix v15',
       category: 'Bikes',
       image: '/images/bike1.jpg',
@@ -85,7 +78,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '8',
       name: 'Range Rover',
       category: 'Cars',
       image: '/images/car5.png',
@@ -97,7 +89,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '9',
       name: 'Crustor',
       category: 'Pants',
       image: '/images/car6.jpg',
