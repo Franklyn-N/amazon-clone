@@ -17,7 +17,26 @@ const createUser = async (req, res) => {
   res.send({ createdUsers });
 };
 
-const signIn = async (req, res) => {
+const register = async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const name = req.body.name;
+  const confirmPassword = req.body.confirmPassword;
+  const hashPassword = bcrypt.hashSync(password, 12);
+
+  const user = new User({
+    name, email, password: hashPassword, confirmPassword
+  });
+  const createdUser = await user.save();
+  res.send({
+    _id: createdUser._id,
+    name:createdUser.name,
+    email: createdUser.email,
+    isAdmin: createdUser.isAdmin,
+  });
+};
+
+const login = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
@@ -41,11 +60,17 @@ const signIn = async (req, res) => {
       { expiresIn: "1h" }
     );
     return res
-      .status(200)
-      .json({ token: token, user: loadedUser });
+      .status(201)
+      .json({
+        _id: loadedUser._id,
+        name: loadedUser.name,
+        email: loadedUser.email,
+        isAdmin: loadedUser.isAdmin,
+        token,
+      });
   } catch (error) {
     console.log(error.message);
   }
 };
 
-export default { getUser, createUser, signIn };
+export default { getUser, createUser, login, register };
